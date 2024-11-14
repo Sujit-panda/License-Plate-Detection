@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<style>
+    .container1{
+        box-shadow:10px 10px 20px 3px grey;
+    }
+    .upload{
+        background-color:cyan;
+        border:none;
+        border-radious:10px;
+    }
+</style>    
+<div class="container">
+        <br><br>
+        <form class="container1" action="#" method="POST" enctype="multipart/form-data">
+            <div class="input-group">
+                <input type="file" class="form-control" name="image_name" required>
+                <input class="upload" type="submit" value="Upload" class="btn btn-outline-secondary">
+            </div>
+        </form>
+    </div>
+
+    {% if upload %}
+        <div class="container">
+            <br><br>
+            <table>
+                <tr>
+                    <td>
+                        <img class="rounded float-left img-fluid" src="/static/upload/{{ upload_image }}" alt="">
+                    </td>
+                    <td>
+                        <img class="rounded float-right img-fluid" src="/static/predict/{{ upload_image }}" alt="">
+                    </td>
+                </tr>
+
+            </table>
+            <br>
+            <table style="border: solid rgb(255, 255, 255); width: 100%;">
+                <tr style="border: solid rgb(255, 255, 255);">
+                    <th style="color: white;">Number of Licence Plate Detected = {{no}}</th>
+                </tr>
+                
+                    {% for lic in text %}
+                    <tr style="border: solid rgb(255, 255, 255);">
+                    <td style="background-color: #49fefbab;">
+                        <p class="display-8" style="color: white;"> {{ lic }}</p>
+                    </td>
+                    </tr>
+                    {% endfor %}
+                
+            </table>
+
+        </div>
+    
+    
+    
+    {% endif %}
+
+{% endblock  %}

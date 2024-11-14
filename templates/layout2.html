@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>License Plate Reader</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <!-- Replace 'Your Logo' with your logo or text -->
+        <!-- Your Logo -->
+        <h2 style="color: white;" class="logo"><img src= "{{ url_for('static', filename='logo.png') }}" width="50" height="50" >Plate.rec</h2>
+      </div>
+      <div class="nav-links">
+        <a href="http://127.0.0.1:5000/">Home</a>
+        <a href="{{ url_for('static', filename='about.html') }}">About</a>
+        <a href="{{ url_for('static', filename='documentation.html') }}">Documentation</a>
+        <a href="{{ url_for('static', filename='contact.html') }}">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <section id="video-container">
+    <video autoplay loop muted>
+      <!-- Replace 'path_to_your_video.mp4' with the path to your video file -->
+      <source src="{{ url_for('static', filename='video1.mp4') }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </section>
+  <div id="about">
+    <!-- About Us content goes here -->
+    <h1><br><br></h1>
+    <h2>  <br>
+      <br>
+      <br>
+      <br>
+      <br>Automated Number Plate Recognition </h2>
+    <!-- <div class="typewriter"><p><br>A number plate detection system is an advanced technology used to automatically identify and read vehicle license plates. It employs computer vision algorithms and optical character recognition (OCR) to capture, process, and interpret number plate information from images or video streams. This system is commonly used for various applications, such as toll collection, parking management, law enforcement, and traffic monitoring. It plays a crucial role in enhancing security, improving efficiency, and enabling automated processes in transportation and surveillance sectors.</p></div> -->
+    </div>
+    <div class="typewriter-container">
+      <p id="line1"></p>
+    </div>
+    <div class="typewriter-container">
+      <p id="line2"></p>
+    </div>
+    <div class="typewriter-container">
+      <p id="line3"></p>
+    </div>
+    <div class="typewriter-container">
+      <p id="line4"></p>
+    </div>
+  {% block body %}
+    
+    
+  {% endblock  %}
+    <div>
+      <h1><br><br></h1>
+    </div>
+  <div class="slider-container">
+    <div class="slider">
+      <img src= "{{ url_for('static', filename='image1.jpg') }}">
+      <img src= "{{ url_for('static', filename='image2.jpg') }}">
+      <img src= "{{ url_for('static', filename='image3.jpg') }}">
+      <img src= "{{ url_for('static', filename='image4.jpg') }}">
+      <img src= "{{ url_for('static', filename='image5.jpg') }}">
+      <img src= "{{ url_for('static', filename='image6.jpg') }}">
+      <img src= "{{ url_for('static', filename='image7.jpg') }}">
+      <img src= "{{ url_for('static', filename='image8.jpg') }}">
+      
+      <!-- Add more images as needed -->
+    </div>
+    <script>
+      // Function to create typewriter effect
+      function typeWriterEffect(text, element, delay) {
+        let i = 0;
+        const speed = 50; // Speed of typewriter effect (milliseconds)
+  
+        function type() {
+          if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+          }
+        }
+  
+        setTimeout(type, delay);
+      }
+  
+      // Trigger the typewriter effect for each line
+      document.addEventListener('DOMContentLoaded', function() {
+        typeWriterEffect("A number plate detection system is an advanced technology used to automatically identify and read vehicle license plates.", document.getElementById('line1'), 0);
+        typeWriterEffect("It employs computer vision algorithms and optical character recognition (OCR) to capture, process, and interpret number plate information from images or video streams.", document.getElementById('line2'), 1000);
+        typeWriterEffect("This system is commonly used for various applications, such as toll collection, parking management, law enforcement, and traffic monitoring. ", document.getElementById('line3'), 2000);
+        typeWriterEffect("It plays a crucial role in enhancing security, improving efficiency, and enabling automated processes in transportation and surveillance sectors.", document.getElementById('line4'), 3000);
+      });
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </div>
+
+</body>
+</html>
